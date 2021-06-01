@@ -1,0 +1,21 @@
+name: "Genshin Impact Daily Check-in Remainder"
+
+on:
+  schedule:
+    - cron: "0 0,13 * * *"  # Minute/Hour/Day/Month/Weekday (UTC)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Embbeded Message
+        id: message
+        run: echo ::set-output name=content::$(cat content.json)
+
+      - name: Sending Message
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.DISCORD_WEBHOOK }}
+          method: 'POST'
+          data: ${{ steps.vars.outputs.content }}

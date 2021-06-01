@@ -9,9 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
       - name: Get Embbeded Message
         id: message
-        run: echo ::set-output name=content::$(cat ./content.json)
+        run: echo ::set-output name=content::$(cat content.json)
 
       - name: Test output
         run: echo ${{ steps.vars.outputs.content }}

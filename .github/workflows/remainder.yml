@@ -13,9 +13,12 @@ jobs:
         id: message
         run: echo ::set-output name=content::$(cat content.json)
 
-      - name: Sending Message
-        uses: fjogeleit/http-request-action@master
-        with:
-          url: ${{ secrets.DISCORD_WEBHOOK }}
-          method: 'POST'
-          data: ${{ steps.vars.outputs.content }}
+      - name: Test output
+        run: echo ${{ steps.vars.outputs.content }}
+
+      # - name: Sending Message
+      #   uses: fjogeleit/http-request-action@master
+      #   with:
+      #     url: ${{ secrets.DISCORD_WEBHOOK }}
+      #     method: 'POST'
+      #     data: ${{ steps.vars.outputs.content }}

@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Get Embbeded Message
         id: message
-        run: echo ::set-output name=content::$(cat content.json)
+        run: echo ::set-output name=content::$(cat ./content.json)
 
       - name: Test output
         run: echo ${{ steps.vars.outputs.content }}

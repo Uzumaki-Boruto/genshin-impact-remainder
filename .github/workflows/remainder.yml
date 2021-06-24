@@ -2,7 +2,7 @@ name: "Genshin Impact Daily Check-in Remainder"
 
 on:
   schedule:
-    - cron: "0 0,13 * * *"  # Minute/Hour/Day/Month/Weekday (UTC)
+    - cron: "0 13 * * *"  # Minute/Hour/Day/Month/Weekday (UTC)
   workflow_dispatch:
 
 jobs:
